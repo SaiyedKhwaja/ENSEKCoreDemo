@@ -1,0 +1,98 @@
+﻿@model ENSEKCoreWebApp.Models.MeterReadingViewModel
+@using LangMeterReading = ClientLanguage.Models.MeterReading;
+@using LangGeneral = ClientLanguage.Models.General;
+@{
+
+    string elementId = ENSEKCoreWebApp.Helpers.HtmlHelpers.GetRandomID();
+
+
+}
+
+<div class="text-center">
+    <h4>
+        @LangMeterReading.Instance.Title
+    </h4>
+
+    <div class="form-group">
+        <table id="@(elementId)" class="table table-responsive table-bordered" style="display:inline-table">
+            <tr>
+                <th>
+                    @LangMeterReading.Instance.AccountId
+
+                </th>
+                <th>
+                    @LangMeterReading.Instance.MeterReadingDateTime
+
+                </th>
+                <th>
+                    @LangMeterReading.Instance.MeterReadingValue
+
+                </th>
+                <th>
+
+                </th>
+
+            </tr>
+            @if (Model != null)
+            {
+                @foreach (var item in Model.meterReadings)
+                {
+                    <tr data-id="@item.AccountId">
+                        <td>
+                            @Html.DisplayFor(modelItem => item.AccountId)
+                        </td>
+                        <td>
+                            @Html.DisplayFor(modelItem => item.MeterReadingDateTime)
+                        </td>
+                        <td>
+                            @Html.DisplayFor(modelItem => item.MeterReadingValue)
+                        </td>
+                        <td>
+                            <a class="action-link" data-id="@item.Id" data-action="edit-meterReading">@LangGeneral.Instance.Edit</a>
+                            <span class="split" />
+                            <a class="action-link" data-id="@item.Id" data-action="delete-meterReading">@LangGeneral.Instance.Delete</a>
+
+                        </td>
+                    </tr>
+
+                }
+            }
+
+
+        </table>
+    </div>
+</div>
+<script>
+        $(document).ready(function () {
+            var recordID;
+            var onButtonClick = function (e) {
+                e.preventDefault();
+                recordID = $(this).attr('data-id');
+                if ($(this).data('action') === 'edit-meterReading') {
+                      if (typeof recordID === typeof undefined) {
+                        // alert("No record selected");
+
+                    }
+                      else {
+
+                           window.location.href = '/MeterReading/Details/?meterReadingId=' + recordID;
+                    }
+                }
+                else if ($(this).data('action') === 'delete-meterReading') {
+                    //delete action
+                }
+                else {
+                }
+
+            };
+
+
+            $('#@(elementId)').find('.action-link').click(onButtonClick);
+
+             $("#@elementId").on("click", "tr", function (event) {
+
+                recordID = $(this).attr('data-id');
+
+            });
+        });
+</script>

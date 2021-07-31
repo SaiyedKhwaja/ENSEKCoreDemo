@@ -1,0 +1,94 @@
+﻿@model ENSEKCoreWebApp.Models.AccountViewModel
+@using LangAccount = ClientLanguage.Models.Account;
+@using LangGeneral = ClientLanguage.Models.General;
+@{
+
+string elementId = ENSEKCoreWebApp.Helpers.HtmlHelpers.GetRandomID();
+
+
+}
+    <div class="text-center">
+        <h4>
+            @LangAccount.Instance.Title  </h4>
+
+        <div class="form-group">
+            <table id="@(elementId)"  class="table table-responsive table-bordered" style="display:inline-table">
+                <tr>
+                    <th>
+                        @LangAccount.Instance.AccountId
+                       
+                    </th>
+                    <th>
+                        @LangAccount.Instance.FirstName
+                       
+                    </th>
+                    <th>
+                        @LangAccount.Instance.LastName
+                     
+                    </th>
+                    <th>
+
+                </th>
+
+            </tr>
+            @if (Model != null)
+            {
+                @foreach (var item in Model.accounts)
+                {
+                    <tr data-id="@item.AccountId">
+                        <td>
+                            @Html.DisplayFor(modelItem => item.AccountId)
+                        </td>
+                        <td>
+                            @Html.DisplayFor(modelItem => item.FirstName)
+                        </td>
+                        <td>
+                            @Html.DisplayFor(modelItem => item.LastName)
+                        </td>
+                        <td>
+                            <a class="action-link" data-id="@item.AccountId" data-action="edit-account">@LangGeneral.Instance.Edit</a>
+                            <span class="split" />
+                            <a class="action-link" data-id="@item.AccountId" data-action="delete-account">@LangGeneral.Instance.Delete</a>
+
+                        </td>
+                    </tr>
+
+                }
+            }
+
+
+        </table>
+    </div>
+</div>
+
+    <script>
+        $(document).ready(function () {
+            var recordID;
+            var onButtonClick = function (e) {
+                e.preventDefault();
+                recordID = $(this).attr('data-id');
+                if ($(this).data('action') === 'edit-account') {
+                      if (typeof recordID === typeof undefined) {
+                        // alert("No record selected");
+
+                    }
+                      else {
+
+                          window.location.href = '/Account/Details/?accountId=' + recordID;
+                         
+                    }
+                }
+                else if ($(this).data('action') === 'delete-account') {
+                    //delete action
+                }
+                else {
+                }
+
+            };
+
+
+            $('#@(elementId)').find('.action-link').click(onButtonClick);
+
+             
+        });
+    </script>

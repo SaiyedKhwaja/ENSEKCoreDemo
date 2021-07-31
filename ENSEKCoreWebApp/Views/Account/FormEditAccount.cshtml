@@ -1,0 +1,50 @@
+﻿@model ENSEKCoreWebApp.Models.FormEditAccountViewModel
+@using LangGeneral = ClientLanguage.Models.General
+@using Lang = ClientLanguage.Models.Account
+@using ENSEKCoreWebApp.Helpers
+@{
+    string elementId = ENSEKCoreWebApp.Helpers.HtmlHelpers.GetRandomID();
+}
+
+<div id="@(elementId)">
+    <div class="title">
+        @Lang.Instance.UpdateAccount
+    </div>
+    @using (Html.BeginForm())
+    {
+        <div class="form-group">
+            @Html.LabelFor(m => m.AccountId)
+            @Html.TextBoxFor(m => m.AccountId, new { @class = "form-control" , @readonly= "true", @style = "width: 150px; display: inline;" })
+        </div>
+        <div class="form-group">
+            @Html.LabelFor(m => m.FirstName)
+            @Html.TextBoxFor(m => m.FirstName, new { @class = "form-control" , @style = "width: 150px; display: inline; " })
+        </div>
+        <div class="form-group">
+            @Html.LabelFor(m => m.LastName)
+            @Html.TextBoxFor(m => m.LastName, new { @class = "form-control" , @style = "width: 150px; display: inline; " })
+        </div>
+
+       
+        <span> <button type="submit" class="btn btn-primary">@LangGeneral.Instance.Update</button></span>
+        <span style="padding-left:25px"> <button id="btnCancel" type="button" class="btn btn-danger">@LangGeneral.Instance.Cancel</button></span>
+       
+    }
+
+
+</div>
+
+
+<script id="@(elementId)">
+    $(document).ready(function () {
+
+    $('#btnCancel').click(function () {
+
+        window.location.href = '@Url.Action("Index", "Account")';
+    });
+
+  
+
+    });
+
+</script>

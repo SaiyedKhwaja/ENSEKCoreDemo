@@ -1,0 +1,158 @@
+﻿@model ENSEKCoreWebApp.Models.ImportMeterReadingViewModel
+@using LangMeterReading = ClientLanguage.Models.MeterReading;
+@using LangGeneral = ClientLanguage.Models.General;
+@{
+
+    string elementId = ENSEKCoreWebApp.Helpers.HtmlHelpers.GetRandomID();
+
+
+}
+<h2>Upload File</h2>
+
+<form asp-controller="MeterReading" asp-action="Import" method="post"
+      enctype="multipart/form-data">
+    <div class="table-responsive  table-striped table-bordered">
+        <table class="table">
+            <tbody>
+                <tr>
+                    <td>Please select file</td>
+                    <td> <input type="file" name="file" /></td>
+                </tr>
+                <tr>
+
+                    <td colspan="2"><button type="submit">Upload File</button></td>
+
+                </tr>
+
+            </tbody>
+        </table>
+    </div>
+
+
+</form>
+@if (Model != null)
+{
+<table id="@(elementId)" class="table table-bordered table-responsive  table-striped table-bordered" cellpadding="0" cellspacing="0" style="display:inline-table">
+    <tr>
+        <th style="width:30px;">Account Id</th>
+        <th>Meter Reading Date/Time</th>
+        <th>Meter Reading Value</th>
+        <th>Status</th>
+        <th>Message</th>
+        <th></th>
+    </tr>
+
+    @foreach (var customer in Model.MeterReadings)
+    {
+        if (customer.AccountId > 0)
+        {
+           ;
+            <tr data-id="@customer.Id" style='@(customer.IsSuccess==false ? "background-color: coral;color:white;" : "")'   >
+                <td class="AccountId" style="width:30px; ">
+                    @customer.AccountId
+                </td>
+                <td class="MeterReadingDateTime">
+                    @customer.MeterReadingDateTime
+                </td>
+                <td class="MeterReadingValue">
+                    @customer.MeterReadingStringValue
+                </td>
+                <td class="MeterReadingValue">
+                    @customer.IsSuccess
+                </td>
+                 <td class="MeterReadingValue">
+                     <table class="table" style='@(customer.IsSuccess==false ? "background-color: coral;color:white;" : "")' >
+                         @foreach (var msg in customer.Messages)
+                         {
+                             <tr style='@(customer.IsSuccess==false ? "background-color: coral;color:white;" : "")' >
+                                 <td>@msg</td>
+                             </tr>
+                         }
+
+                     </table>
+                </td>
+                <td>
+                    <a class="action-link" data-id="@customer.Id" data-action="edit-meter-reading">@LangGeneral.Instance.Edit</a>
+                    <span class="split" />
+                    <a class="action-link" data-id="@customer.Id" data-action="delete-meter-reading">@LangGeneral.Instance.Delete</a>
+
+                </td>
+
+            </tr>
+        }
+
+
+
+    }
+</table>
+
+    <!--Add new record-->
+
+}
+<script>
+     $(document).ready(function () {
+            var recordID;
+            var onButtonClick = function (e) {
+                e.preventDefault();
+                recordID = $(this).attr('data-id');
+                if ($(this).data('action') === 'edit-meter-reading') {
+                      if (typeof recordID === typeof undefined) {
+                        // alert("No record selected");
+
+                    }
+                      else {
+                          window.location.href = '/MeterReading/Details/?meterReadingId=' + recordID;
+                        
+                    }
+                }
+                else if ($(this).data('action') === 'delete-meter-reading') {
+
+                }
+                else {
+
+                }
+
+            };
+
+
+            $('#@(elementId)').find('.action-link').click(onButtonClick);
+
+             
+        });
+</script>
+<!--<script>
+    (function () {
+        
+             var recordID;
+             var onButtonClick = function (e) {
+                e.preventDefault();
+
+                 if ($(this).data('action') === 'edit-meter-reading') {
+                    if (typeof recordID === typeof undefined) {
+                        alert("No record selected");
+                    }
+                    else {
+                      //  Modules.archives.edit('Model.CaseRecordUID', recordUID);
+                        alert(recordID);
+                    }
+                }
+                 else if ($(this).data('action') === 'delete-meter-reading') {
+                   // Modules.archives.createVerification(recordUID, 'Model.CaseRecordUID');
+                }
+
+            };
+
+            $('#(elementId)').find('.action-link').click(onButtonClick);
+
+            $("#elementId").on("click", "tr", function (event) {-->
+               
+                <!--recordID = $(this).attr('data-id');
+
+            });
+
+
+    })();
+</script>-->
+
+
+

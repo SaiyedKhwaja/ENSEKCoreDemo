@@ -1,0 +1,60 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 16
+VisualStudioVersion = 16.0.31424.327
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "BusinessLayer", "BusinessLayer\BusinessLayer.csproj", "{FA256C5A-F408-478E-BDA6-8F9FD45C01BF}"
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "DataAccessLayer", "DataAccessLayer\DataAccessLayer.csproj", "{79D4078B-4742-4B16-9EBD-5ED35EFAB505}"
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "ENSEKCoreAPI", "ENSEKCoreAPI\ENSEKCoreAPI.csproj", "{4A59346A-1B95-4E42-A5DC-301DA8AC7715}"
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "ENSEKCoreWebApp", "ENSEKCoreWebApp\ENSEKCoreWebApp.csproj", "{F902C733-E05A-404A-89BE-CC7E000A4881}"
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "ClientLanguage", "ClientLanguage\ClientLanguage.csproj", "{9CCCF7E7-2D25-4BBE-93E4-A2C711E2776F}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "UnitTestENSEKCore.Tests", "UnitTestENSEKCore.Tests\UnitTestENSEKCore.Tests.csproj", "{BB07CD69-D760-4319-8A5B-3E30001909E7}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "SQL Scripts", "SQL Scripts", "{C4EF109F-9D76-421F-AE68-02E673EAC31B}"
+	ProjectSection(SolutionItems) = preProject
+		ENSEKCoreDemo_Database.sql = ENSEKCoreDemo_Database.sql
+	EndProjectSection
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{FA256C5A-F408-478E-BDA6-8F9FD45C01BF}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{FA256C5A-F408-478E-BDA6-8F9FD45C01BF}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{FA256C5A-F408-478E-BDA6-8F9FD45C01BF}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{FA256C5A-F408-478E-BDA6-8F9FD45C01BF}.Release|Any CPU.Build.0 = Release|Any CPU
+		{79D4078B-4742-4B16-9EBD-5ED35EFAB505}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{79D4078B-4742-4B16-9EBD-5ED35EFAB505}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{79D4078B-4742-4B16-9EBD-5ED35EFAB505}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{79D4078B-4742-4B16-9EBD-5ED35EFAB505}.Release|Any CPU.Build.0 = Release|Any CPU
+		{4A59346A-1B95-4E42-A5DC-301DA8AC7715}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{4A59346A-1B95-4E42-A5DC-301DA8AC7715}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{4A59346A-1B95-4E42-A5DC-301DA8AC7715}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{4A59346A-1B95-4E42-A5DC-301DA8AC7715}.Release|Any CPU.Build.0 = Release|Any CPU
+		{F902C733-E05A-404A-89BE-CC7E000A4881}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{F902C733-E05A-404A-89BE-CC7E000A4881}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{F902C733-E05A-404A-89BE-CC7E000A4881}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{F902C733-E05A-404A-89BE-CC7E000A4881}.Release|Any CPU.Build.0 = Release|Any CPU
+		{9CCCF7E7-2D25-4BBE-93E4-A2C711E2776F}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{9CCCF7E7-2D25-4BBE-93E4-A2C711E2776F}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{9CCCF7E7-2D25-4BBE-93E4-A2C711E2776F}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{9CCCF7E7-2D25-4BBE-93E4-A2C711E2776F}.Release|Any CPU.Build.0 = Release|Any CPU
+		{BB07CD69-D760-4319-8A5B-3E30001909E7}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{BB07CD69-D760-4319-8A5B-3E30001909E7}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{BB07CD69-D760-4319-8A5B-3E30001909E7}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{BB07CD69-D760-4319-8A5B-3E30001909E7}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {37490F94-1BD6-4DD5-8569-C6D597492564}
+	EndGlobalSection
+EndGlobal
